@@ -13,6 +13,8 @@ Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
 h2. License
 
 * Source under "MIT license":http://copyfree.org/licenses/mit/license.txt.
+* MonoSingleton.cs from Berenger, "UnifyCommunity Wiki":http://unifycommunity.com/wiki/index.php?title=Singleton
+* SilkScreen Font from "Jason Kottke":http://kottke.org/plus/type/silkscreen/
 
 h2. Releases & Changelog
 
