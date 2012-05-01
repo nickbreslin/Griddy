@@ -26,4 +26,5 @@ h2. Releases & Changelog
 
 h3. v0.1 - Archive Release
 
-* Originally v 0.1 2010 release, now stored in the Archive branch. Compatibility with Unity 3.x is unknown.
+* Original 2010 release, now stored in the Archive branch. Compatibility with Unity 3.x is unknown.
+* This version will not be supported by future versions.
