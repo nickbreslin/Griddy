@@ -17,7 +17,7 @@ using System.Collections;
 //----------------------------------------------------------------------------
 // 
 //============================================================================
-public class OldGriddy : MonoBehaviour
+public class Griddy : MonoBehaviour
 {
 
 
