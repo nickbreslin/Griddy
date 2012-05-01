@@ -13,8 +13,13 @@ Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
 h2. License
 
 * Source under "MIT license":http://copyfree.org/licenses/mit/license.txt.
-* MonoSingleton.cs from Berenger, "UnifyCommunity Wiki":http://unifycommunity.com/wiki/index.php?title=Singleton
+
+
+h2. Contributions
+
+* MonoSingleton.cs from "Berenger":http://unifycommunity.com/wiki/index.php?title=Singleton
 * SilkScreen Font from "Jason Kottke":http://kottke.org/plus/type/silkscreen/
+* GridUI influenced by "AngryAnt":http://eej.dk/angryant/general/tipsandtricks/building-a-menu-of-delegates-and-enums/
 
 h2. Releases & Changelog
 
