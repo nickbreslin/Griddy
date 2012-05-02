@@ -1,68 +1,58 @@
 using UnityEngine;
 using System.Collections;
 
-public enum ClickMode
+public class CameraClick : MonoSingleton<CameraClick>
 {
-	Single,
-	Automatic
-}
-
-public class CameraClick : MonoBehaviour {
+	public bool isActive = false;
+	public bool debugMode = false; // refactor to Debug Class
 	
-	/*
-	RaycastHit gHit = new RaycastHit();
-
-	public static CameraClick instance;
-	void Awake()
+	
+	void Start()
 	{
-		if(CameraClick.instance == null)
-		{
-			CameraClick.instance = this;
-		}
-		else
-		{
-			DestroyImmediate(this);
-		}
+		//todo - a manager should trigger this to active.
+		// On scene switch, this should be changed to inactive.
+		isActive = true;
 	}
-
-	void Update() {
-		if(!Game.instance.isReady)
+	
+	void Update()
+	{
+		if(!isActive)
+		{
 			return;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+		}
+		
+		
+		
+		Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+        
+		if(debugMode)
+		{
+			Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+		}
 		
 		RaycastHit hit = new RaycastHit();
-		UI.instance.ClearHover();
+		
+		//togo - clear hover
     	if (Physics.Raycast (ray, out hit, 1000)) 
 		{
-			gHit = hit;
+			GridInteractable gi = hit.collider.gameObject.GetComponent<GridInteractable>();
 			
-			GameObject go = gHit.collider.gameObject;
-			Cube cube = go.GetComponent<Cube>();
-			
-			if(cube != null)
+			if(!gi)
 			{
-				UI.instance.SetHover(cube);
-				
-				if(Player.instance.mode == ClickMode.Single)
-				{
-					if(Input.GetMouseButtonDown(0))
-					{
-						cube.Hit();
-					}
-				}
-				else if(Player.instance.mode == ClickMode.Automatic)
-				{
-					if(Input.GetMouseButton (0))
-					{
-						cube.Hit();
-					}
-				}
+				return;
 			}
+			
+			//todo - set hover.
+			
+			//todo - define in settings
+			//if(Player.instance.mode == ClickMode.Single)
+			//{
+				if(Input.GetMouseButtonDown(0))
+				{
+					//gi.MouseButtonDown(0);
+				}
+			//}
 		}
-				
-
     }
-    */
 }

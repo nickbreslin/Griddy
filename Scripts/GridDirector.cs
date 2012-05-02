@@ -3,11 +3,11 @@ using System.Collections;
 
 public class GridDirector : MonoSingleton<GridDirector> {
 	
-	protected override void Init()
+	void Start()
 	{
 		GridViewController.instance.AddView("test", ViewDirector);
 		GridViewController.instance.SetView("fake");
-		GridViewController.instance.SetView("test");
+		//GridViewController.instance.SetView("test");
 	}
 	
 	void ViewDirector()
