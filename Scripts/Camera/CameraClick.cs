@@ -5,6 +5,7 @@ public class CameraClick : MonoSingleton<CameraClick>
 {
 	public bool isActive = false;
 	public bool debugMode = false; // refactor to Debug Class
+	GridInteractable gi = null;
 	
 	
 	void Start()
@@ -33,10 +34,15 @@ public class CameraClick : MonoSingleton<CameraClick>
 		
 		RaycastHit hit = new RaycastHit();
 		
-		//togo - clear hover
+		if(gi != null)
+		{
+			gi.StopHover();
+			gi = null;
+		}
+		
     	if (Physics.Raycast (ray, out hit, 1000)) 
 		{
-			GridInteractable gi = hit.collider.gameObject.GetComponent<GridInteractable>();
+			gi = hit.collider.gameObject.GetComponent<GridInteractable>();
 			
 			if(!gi)
 			{
@@ -44,6 +50,8 @@ public class CameraClick : MonoSingleton<CameraClick>
 			}
 			
 			//todo - set hover.
+			
+			gi.StartHover();
 			
 			//todo - define in settings
 			//if(Player.instance.mode == ClickMode.Single)

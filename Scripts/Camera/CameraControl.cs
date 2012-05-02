@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraControl : MonoBehaviour {
+public class CameraControl : MonoSingleton<CameraControl>
+{
 	
-	/*
 	public Transform target;
 	
 	Vector2 velocity = new Vector2(0,0);
@@ -14,7 +14,12 @@ public class CameraControl : MonoBehaviour {
 
 	void Start()
 	{
-		transform.LookAt(target);
+		SetTarget(target);
+	}
+	
+	void SetTarget(Transform _target)
+	{
+		transform.LookAt(_target);
 	}
 	
 	void Update () {
@@ -103,5 +108,4 @@ public class CameraControl : MonoBehaviour {
 		
 		return velocity;
 	}
-	*/
 }
