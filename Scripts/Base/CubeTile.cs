@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+/*
 enum TileState {
 	Active,
 	Inactive,
@@ -22,3 +22,4 @@ public class CubeTile : MonoBehaviour {
 	public Renderer listener;
 	
 }
+*/

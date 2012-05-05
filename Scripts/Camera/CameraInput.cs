@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraClick : MonoSingleton<CameraClick>
+public class CameraInput : MonoSingleton<CameraInput>
 {
 	public bool isActive = false;
-	GridInteractable gi = null;
+	GridTrigger trigger = null;
 	
 	
 	void Update()
@@ -23,31 +23,35 @@ public class CameraClick : MonoSingleton<CameraClick>
 		
 		RaycastHit hit = new RaycastHit();
 		
-		if(gi != null)
+		if(trigger != null)
 		{
-			gi.StopHover();
-			gi = null;
+			trigger.StopHover();
+			trigger = null;
 		}
 		
     	if (Physics.Raycast (ray, out hit, 1000)) 
 		{
-			gi = hit.collider.gameObject.GetComponent<GridInteractable>();
+			trigger = hit.collider.gameObject.GetComponent<GridTrigger>();
 			
-			if(!gi)
+			if(!trigger)
 			{
 				return;
 			}
 			
 			//todo - set hover.
 			
-			gi.StartHover();
+			trigger.StartHover();
 			
 			//todo - define in settings
 			//if(Player.instance.mode == ClickMode.Single)
 			//{
 				if(Input.GetMouseButtonDown(0))
 				{
-					//gi.MouseButtonDown(0);
+					trigger.OnLeftClick();
+				}
+				if(Input.GetMouseButtonDown(1))
+				{
+					trigger.OnRightClick();
 				}
 			//}
 		}
