@@ -25,7 +25,7 @@ public class GridViewController : MonoSingleton<GridViewController>
 	public void AddView(string key, OnGUIImplementation view)
 	{
 		views[key] = view;
-		Debug.Log (views.Count);
+//		Debug.Log (views.Count);
 	}
 	
 	public void SetView(string key)
@@ -33,7 +33,7 @@ public class GridViewController : MonoSingleton<GridViewController>
 		if(views.ContainsKey(key))
 		{
 			currentView = key;
-			Debug.Log (currentView);
+//			Debug.Log (currentView);
 		}
 		else
 		{

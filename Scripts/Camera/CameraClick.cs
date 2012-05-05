@@ -4,16 +4,8 @@ using System.Collections;
 public class CameraClick : MonoSingleton<CameraClick>
 {
 	public bool isActive = false;
-	public bool debugMode = false; // refactor to Debug Class
 	GridInteractable gi = null;
 	
-	
-	void Start()
-	{
-		//todo - a manager should trigger this to active.
-		// On scene switch, this should be changed to inactive.
-		isActive = true;
-	}
 	
 	void Update()
 	{
@@ -22,12 +14,9 @@ public class CameraClick : MonoSingleton<CameraClick>
 			return;
 		}
 		
-		
-		
 		Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-        
-		if(debugMode)
+		if(GridDirector.instance.isDebugMode)
 		{
 			Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
 		}
