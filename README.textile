@@ -1,0 +1,30 @@
+h1. Griddy
+
+A Grid library for the Unity game engine.
+
+Supports Square and Hex grids for games of all genres.
+
+h3. Nick Breslin, Etiquette Studio
+
+E-Mail: "nickbreslin@gmail.com":mailto:nickbreslin@gmail.com
+Twitter: "@EtiquetteStudio":http://twitter.com/#!/EtiquetteStudio
+Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
+
+h2. License
+
+* Source under "MIT license":http://copyfree.org/licenses/mit/license.txt.
+
+
+h2. Contributions
+
+* MonoSingleton.cs from "Berenger":http://unifycommunity.com/wiki/index.php?title=Singleton
+* SilkScreen Font from "Jason Kottke":http://kottke.org/plus/type/silkscreen/
+* GridUI influenced by "AngryAnt":http://eej.dk/angryant/general/tipsandtricks/building-a-menu-of-delegates-and-enums/
+
+h2. Releases & Changelog
+
+
+h3. v0.1 - Archive Release
+
+* Original 2010 release, now stored in the Archive branch. Compatibility with Unity 3.x is unknown.
+* This version will not be supported by future versions.
