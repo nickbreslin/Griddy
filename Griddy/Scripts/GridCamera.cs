@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraInput : MonoSingleton<CameraInput>
+public class GridCamera : MonoSingleton<GridCamera>
 {
 	public bool isActive = false;
 	GridTrigger trigger = null;
