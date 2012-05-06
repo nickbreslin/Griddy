@@ -7,17 +7,17 @@ public class GridDirector : MonoSingleton<GridDirector>
 	
 	void Start()
 	{
-		GridViewController.instance.AddView("test", ViewDirector);
-		//GridViewController.instance.SetView("fake");
-		GridViewController.instance.SetView("test");
 	}
 	
-	void ViewDirector()
+	void OnGUI()
 	{
-		GUILayout.Label("Director");
-		if(GUILayout.Button ("Generate"))
+		if(GUILayout.Button ("Generate Square Grid"))
 		{
 			GridGenerator.instance.Generate(Vector3.zero, 5, 5);
+		}
+		if(GUILayout.Button ("Generate Hex Grid"))
+		{
+			GridGenerator.instance.GenerateHex(Vector3.zero, 5, 5);
 		}
 	}
 }
