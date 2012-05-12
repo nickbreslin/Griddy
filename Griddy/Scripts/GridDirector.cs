@@ -17,7 +17,7 @@ public class GridDirector : MonoSingleton<GridDirector>
 		}
 		if(GUILayout.Button ("Generate Hex Grid"))
 		{
-			GridGenerator.instance.GenerateHex(Vector3.zero, 5, 5);
+			GridGenerator.instance.GenerateHex(new Vector3(0,0,10), 3, 3);
 		}
 	}
 }

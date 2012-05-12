@@ -63,4 +63,18 @@ public class GridView : MonoBehaviour {
 	}
 	
 	//public 
+	
+	void Start()
+	{
+		float r = Random.Range(0,1.0f);
+		float g = Random.Range(0,1.0f);
+		float b = Random.Range(0,1.0f);
+		Color c = new Color(r,g,b);
+
+		foreach(Renderer renderer in renderers)
+		{
+			renderer.material.color = c;
+		}
+		Debug.Log (c);
+	}
 }

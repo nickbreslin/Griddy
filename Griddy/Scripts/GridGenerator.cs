@@ -3,8 +3,8 @@ using System.Collections;
 
 public class GridGenerator : MonoSingleton<GridGenerator>
 {
-	public GameObject tile;
-	
+	public GameObject square;
+	public GameObject hex;
 	// Use this for initialization
 	public void Generate(Vector3 origin, int width, int height)
 	{
@@ -13,7 +13,7 @@ public class GridGenerator : MonoSingleton<GridGenerator>
 			for(int y = 0; y < height; y++)
 			{
 				Vector3 position = origin + new Vector3(x,0,y);
-				Instantiate(tile, position, Quaternion.identity);
+				Instantiate(square, position, Quaternion.identity);
 			}
 		}
 	}
@@ -25,14 +25,14 @@ public class GridGenerator : MonoSingleton<GridGenerator>
 		{
 			for(int y = 0; y < height; y++)
 			{
-				Vector3 position = origin + new Vector3(x,0,y);
+				Vector3 position = origin + new Vector3(x * 1.75f,0,y * 1.5f);
 				
 				if(y % 2 == 0)
 				{
-					position += new Vector3(0,0,0.5f);
+					position += new Vector3((1.75f/2f),0,0);
 				}
 				
-				Instantiate(tile, position, Quaternion.identity);
+				Instantiate(hex, position, Quaternion.identity);
 			}
 		}
 	}
