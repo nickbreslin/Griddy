@@ -28,6 +28,10 @@ public class TttUI : UIManager
 		GUILayout.EndArea ();
 	}
 	
+	// game start (restart) view. should be hidden if game is being played.
+	
+	// view default should show game state (waiting to begin, who's turn it is, who won).
+	
 	protected override void ViewInstructions()
 	{
 		GUILayout.Label ("Default View");
