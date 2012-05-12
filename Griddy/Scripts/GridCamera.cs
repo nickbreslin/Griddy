@@ -4,7 +4,17 @@ using System.Collections;
 public class GridCamera : MonoSingleton<GridCamera>
 {
 	public bool isActive = false;
+	public bool lookAtOrigin = true;
 	GridTrigger trigger = null;
+	
+	void Start()
+	{
+		if(lookAtOrigin)
+		{
+			transform.LookAt(Vector3.zero);
+		}
+	}
+		
 	
 	void Update()
 	{
