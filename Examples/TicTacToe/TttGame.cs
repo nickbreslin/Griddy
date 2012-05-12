@@ -23,7 +23,7 @@ public class TttGame : MonoBehaviour {
 	public Player player = Player.Player1;
 	public int turn = 0;
 	
-	Player[] board = new Player[10];
+	Player[] board = new Player[9];
 	
 	public void GameInit()
 	{
@@ -58,73 +58,73 @@ public class TttGame : MonoBehaviour {
 	private bool CheckWin()
 	{
 		
-		if(board[5] == player)
+		if(board[4] == player)
 		{
-			if(board[2] == player)
-			{
-				if(board[8] == player)
-				{
-					return true;
-				}
-			}
-			
-			if(board[4] == player)
-			{
-				if(board[6] == player)
-				{
-					return true;
-				}
-			}
-			
 			if(board[1] == player)
-			{
-				if(board[9] == player)
-				{
-					return true;
-				}
-			}
-			
-			if(board[3] == player)
 			{
 				if(board[7] == player)
 				{
 					return true;
 				}
 			}
-		}
-		
-		if(board[1] == player)
-		{
+			
 			if(board[3] == player)
 			{
-				if(board[2] == player)
+				if(board[5] == player)
 				{
 					return true;
 				}
 			}
 			
-			if(board[7] == player)
+			if(board[0] == player)
 			{
-				if(board[4] == player)
+				if(board[8] == player)
 				{
 					return true;
 				}
 			}
-		}
-		
-		if(board[9] == player)
-		{
-			if(board[3] == player)
+			
+			if(board[2] == player)
 			{
 				if(board[6] == player)
 				{
 					return true;
 				}
 			}
-			
-			if(board[7] == player)
+		}
+		
+		if(board[0] == player)
+		{
+			if(board[2] == player)
 			{
-				if(board[8] == player)
+				if(board[1] == player)
+				{
+					return true;
+				}
+			}
+			
+			if(board[6] == player)
+			{
+				if(board[3] == player)
+				{
+					return true;
+				}
+			}
+		}
+		
+		if(board[8] == player)
+		{
+			if(board[2] == player)
+			{
+				if(board[5] == player)
+				{
+					return true;
+				}
+			}
+			
+			if(board[6] == player)
+			{
+				if(board[7] == player)
 				{
 					return true;
 				}
