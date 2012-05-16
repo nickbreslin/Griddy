@@ -1,10 +1,22 @@
 using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class GridGenerator : MonoSingleton<GridGenerator>
 {
 	public GameObject square;
 	public GameObject hex;
+	
+	private List<GameObject> tiles = new List<GameObject>();
+	
+	public void Clear()
+	{
+		foreach(GameObject go in tiles)
+		{
+			Destroy(go);
+		}
+		
+		tiles = new List<GameObject>();
+	}
 	// Use this for initialization
 	public void Generate(Vector3 origin, int width, int height)
 	{

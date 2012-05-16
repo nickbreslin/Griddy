@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public enum GameState
+public enum GameState 
 {
 	None,
 	Playing,
@@ -17,8 +17,8 @@ public enum Player
 }
 
 
-public class TttGame : MonoBehaviour {
-	
+public class TttGame : MonoSingleton<TttGame>
+{
 	public GameState state = GameState.None;
 	public Player player = Player.Player1;
 	public int turn = 0;
@@ -31,6 +31,7 @@ public class TttGame : MonoBehaviour {
 		player = Player.Player1;
 		state = GameState.Playing;
 		board = new Player[10];
+		GridGenerator.instance.Clear();
 		
 		
 		// starting values
