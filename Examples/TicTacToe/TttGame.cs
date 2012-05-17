@@ -25,6 +25,8 @@ public class TttGame : MonoSingleton<TttGame>
 	
 	Player[] board = new Player[9];
 	
+	public GameObject tile;
+	
 	public void GameInit()
 	{
 		turn = 0;
@@ -32,12 +34,7 @@ public class TttGame : MonoSingleton<TttGame>
 		state = GameState.Playing;
 		board = new Player[10];
 		GridGenerator.instance.Clear();
-		
-		
-		// starting values
-		// clear board -- add as option for generator.
-		// generate board
-		// update UI
+		GridGenerator.instance.Generate(tile,Vector3.zero, 3,3);
 	}
 	
 	public void Step()
