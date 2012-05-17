@@ -43,14 +43,20 @@ public class TttUI : UIManager
 			
 		GUILayout.BeginArea (new Rect(10, Screen.height - 40, Screen.width-20, Screen.height-50));
 		GUILayout.BeginVertical ();
+		GUILayout.BeginHorizontal ();
 		GUILayout.Label (label);
 		if(TttGame.instance.state != GameState.Playing)
 		{
+			GUILayout.Space (20);
+			GUI.color = Color.Lerp (Color.cyan, Color.yellow, Time.time % 1f);
 			if(GUILayout.Button("Start Game!"))
 			{
 				TttGame.instance.GameInit();
 			}
+			GUI.color = Color.white;
+			GUILayout.FlexibleSpace ();
 		}
+		GUILayout.EndHorizontal();
 		GUILayout.FlexibleSpace ();
 		GUILayout.EndVertical();
 		GUILayout.EndArea ();
@@ -64,6 +70,14 @@ public class TttUI : UIManager
 	
 	protected override void ViewInstructions()
 	{
-		GUILayout.Label ("Default View");
+		GUI.color = Color.green;
+		GUILayout.Label ("Objective:");
+		GUI.color = Color.white;
+		GUILayout.Label ("Be the first player to select three squares in a row or diagonal.");
+		GUILayout.Space(10);
+		GUI.color = Color.yellow;
+		GUILayout.Label ("Method of Play:");
+		GUI.color = Color.white;
+		GUILayout.Label ("Each player will alternate turns selecting a square. Play continues until a player wins, or no selectable squares remain.");
 	}
 }

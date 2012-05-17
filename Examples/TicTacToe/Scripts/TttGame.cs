@@ -29,6 +29,8 @@ public class TttGame : MonoSingleton<TttGame>
 	
 	public void GameInit()
 	{
+		GridCamera.instance.isActive = true;
+
 		turn = 0;
 		player = Player.Player1;
 		state = GameState.Playing;
@@ -50,12 +52,14 @@ public class TttGame : MonoSingleton<TttGame>
 	{
 		if(CheckWin ())
 		{
+			GridCamera.instance.isActive = false;
 			state = GameState.Complete;
 			return;
 		}
 		
 		if(CheckDraw ())
 		{
+			GridCamera.instance.isActive = false;
 			state = GameState.Draw;
 			return;
 		}
