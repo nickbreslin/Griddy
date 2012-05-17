@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class GridGenerator : MonoSingleton<GridGenerator>
 {
-	private List<GameObject> tiles = new List<GameObject>();
+	public List<GameObject> tiles = new List<GameObject>();
 	
 	public void Clear()
 	{
