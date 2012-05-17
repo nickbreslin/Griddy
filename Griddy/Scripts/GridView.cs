@@ -17,7 +17,7 @@ public class GridView : MonoBehaviour {
 	public Vector3 origin; // Used for instantiating at a specific grid.
 	
 	public ViewState state;
-	Color color;
+	protected Color color;
 	public Renderer[] renderers;
 	void Awake()
 	{
@@ -25,7 +25,7 @@ public class GridView : MonoBehaviour {
 		origin = originTransform.position;
 	}
 	
-	public void SetState(ViewState viewState)
+	public virtual void SetState(ViewState viewState)
 	{
 		if(state == ViewState.Invalid)
 		{
