@@ -35,6 +35,15 @@ public class TttGame : MonoSingleton<TttGame>
 		board = new Player[10];
 		GridGenerator.instance.Clear();
 		GridGenerator.instance.Generate(tile,Vector3.zero, 3,3);
+		
+		int index = 0;
+		foreach(GameObject go in GridGenerator.instance.tiles)
+		{
+			TttModel tm = go.GetComponent<TttModel>() as TttModel;
+			tm.index = index;
+			index++;
+		}
+				
 	}
 	
 	public void Step()
@@ -48,6 +57,7 @@ public class TttGame : MonoSingleton<TttGame>
 		if(CheckDraw ())
 		{
 			state = GameState.Draw;
+			return;
 		}
 		
 		NextTurn ();
@@ -151,7 +161,7 @@ public class TttGame : MonoSingleton<TttGame>
 	
 	private bool CheckDraw()
 	{
-		if(turn < 9)
+		if(turn < 8)
 		{
 			return false;
 		}
@@ -167,7 +177,7 @@ public class TttGame : MonoSingleton<TttGame>
 	
 	public void UpdateBoard(int index, Player value)
 	{
-		if(index > 0 && index < board.Length)
+		if(index >= 0 && index < board.Length)
 		{
 			board[index] = value;
 			Step();
