@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum GameState 
 {
@@ -23,7 +24,8 @@ public class TttGame : MonoSingleton<TttGame>
 	public Player player = Player.Player1;
 	public int turn = 0;
 	
-	Player[] board = new Player[9];
+	//TttModel[] board = new Player[9];
+	List<TttModel> board = new List<TttModel>();
 	
 	public GameObject tile;
 	
@@ -34,7 +36,7 @@ public class TttGame : MonoSingleton<TttGame>
 		turn = 0;
 		player = Player.Player1;
 		state = GameState.Playing;
-		board = new Player[10];
+		board = new List<TttModel>();
 		GridGenerator.instance.Clear();
 		GridGenerator.instance.Generate(tile,Vector3.zero, 3,3);
 		
@@ -43,6 +45,7 @@ public class TttGame : MonoSingleton<TttGame>
 		{
 			TttModel tm = go.GetComponent<TttModel>() as TttModel;
 			tm.index = index;
+			board.Add(tm);
 			index++;
 		}
 				
@@ -70,74 +73,98 @@ public class TttGame : MonoSingleton<TttGame>
 	private bool CheckWin()
 	{
 		
-		if(board[4] == player)
+		if(board[4].player == player)
 		{
-			if(board[1] == player)
+			if(board[1].player == player)
 			{
-				if(board[7] == player)
+				if(board[7].player == player)
 				{
+					board[4].Blink();
+					board[1].Blink();
+					board[7].Blink();
 					return true;
 				}
 			}
 			
-			if(board[3] == player)
+			if(board[3].player == player)
 			{
-				if(board[5] == player)
+				if(board[5].player == player)
 				{
+					board[4].Blink();
+					board[3].Blink();
+					board[5].Blink();
 					return true;
 				}
 			}
 			
-			if(board[0] == player)
+			if(board[0].player == player)
 			{
-				if(board[8] == player)
+				if(board[8].player == player)
 				{
+					board[4].Blink();
+					board[0].Blink();
+					board[8].Blink();
 					return true;
 				}
 			}
 			
-			if(board[2] == player)
+			if(board[2].player == player)
 			{
-				if(board[6] == player)
+				if(board[6].player == player)
 				{
+					board[4].Blink();
+					board[2].Blink();
+					board[6].Blink();
 					return true;
 				}
 			}
 		}
 		
-		if(board[0] == player)
+		if(board[0].player == player)
 		{
-			if(board[2] == player)
+			if(board[2].player == player)
 			{
-				if(board[1] == player)
+				if(board[1].player == player)
 				{
+					board[0].Blink();
+					board[2].Blink();
+					board[1].Blink();
 					return true;
 				}
 			}
 			
-			if(board[6] == player)
+			if(board[6].player == player)
 			{
-				if(board[3] == player)
+				if(board[3].player == player)
 				{
+					board[0].Blink();
+					board[6].Blink();
+					board[3].Blink();
 					return true;
 				}
 			}
 		}
 		
-		if(board[8] == player)
+		if(board[8].player == player)
 		{
-			if(board[2] == player)
+			if(board[2].player == player)
 			{
-				if(board[5] == player)
+				if(board[5].player == player)
 				{
+					board[8].Blink();
+					board[2].Blink();
+					board[5].Blink();
 					return true;
 				}
 			}
 			
-			if(board[6] == player)
+			if(board[6].player == player)
 			{
-				if(board[7] == player)
+				if(board[7].player == player)
 				{
+					board[8].Blink();
+					board[6].Blink();
+					board[7].Blink();
 					return true;
 				}
 			}
@@ -181,9 +208,9 @@ public class TttGame : MonoSingleton<TttGame>
 	
 	public void UpdateBoard(int index, Player value)
 	{
-		if(index >= 0 && index < board.Length)
+		if(index >= 0 && index < board.Count)
 		{
-			board[index] = value;
+			board[index].player = value;
 			Step();
 		}
 	}

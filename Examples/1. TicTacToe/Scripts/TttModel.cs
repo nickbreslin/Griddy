@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TttModel : MonoBehaviour {
 	
-	Player player = Player.None;
+	public Player player = Player.None;
 	public int index;
 	public GridController controller;
 	
@@ -17,9 +17,10 @@ public class TttModel : MonoBehaviour {
 		}
 		
 		player = TttGame.instance.player;
+		((TttView)controller.view).SetPlayer(player);
 		TttGame.instance.UpdateBoard(index, player);
 		
-		((TttView)controller.view).SetPlayer(player);
+		
 		//Instantiate(plant, controller.view.origin, Quaternion.identity);
 	}
 
@@ -43,5 +44,10 @@ public class TttModel : MonoBehaviour {
 		}
 		
 		controller.view.SetState(ViewState.Default);
+	}
+	
+	public void Blink()
+	{
+		((TttView)controller.view).Blink();
 	}
 }

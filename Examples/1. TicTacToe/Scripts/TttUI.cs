@@ -45,11 +45,14 @@ public class TttUI : UIManager
 		GUILayout.BeginVertical ();
 		GUILayout.BeginHorizontal ();
 		GUILayout.Label (label);
+		GUILayoutOption[] options = new GUILayoutOption[2];
+		options[0] = GUILayout.Height(30);
+		options[1] = GUILayout.Width(200);
 		if(TttGame.instance.state != GameState.Playing)
 		{
 			GUILayout.Space (20);
 			GUI.color = Color.Lerp (Color.cyan, Color.yellow, Time.time % 1f);
-			if(GUILayout.Button("Start Game!"))
+			if(GUILayout.Button("Start Game!", options))
 			{
 				TttGame.instance.GameInit();
 			}

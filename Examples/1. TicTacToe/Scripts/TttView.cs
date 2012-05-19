@@ -4,7 +4,8 @@ using System.Collections;
 
 public class TttView : GridView {
 
-
+	bool blinking = false;
+	
 	public void SetPlayer(Player player)
 	{
 		if(state == ViewState.Invalid)
@@ -33,6 +34,24 @@ public class TttView : GridView {
 			
 			}
 		}
+	}
+	
+	public void Update()
+	{
+		if(blinking)
+		{
+			foreach(Renderer renderer in renderers)
+			{
+				renderer.material.color = Color.Lerp (color, Color.white, Time.time % 1f);
+			}
+		}
+	}
+	
+	public void Blink()
+	{
+		color = renderers[0].material.color;
+		blinking = true;
+		
 	}
 	
 	public override void SetState(ViewState viewState)
