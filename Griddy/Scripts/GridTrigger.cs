@@ -2,10 +2,10 @@ using UnityEngine;
 
 public enum TriggerEvent
 {
-	StartHover,
-	StopHover,
-	OnRightClick,
-	OnLeftClick
+    StartHover,
+    StopHover,
+    OnRightClick,
+    OnLeftClick
 }
 
 /*
@@ -22,32 +22,32 @@ public enum TriggerEvent
  */ 
 public class GridTrigger : MonoBehaviour
 {
-	public GridController controller;
-	
-	void Awake()
-	{
-		if(!controller)
-		{
-			Debug.LogError ("Controller not defined.");
-		}
-	}
-	
-	public void StartHover()
-	{
-		controller.Trigger(TriggerEvent.StartHover);
-	}
-	
-	public void StopHover()
-	{
-		controller.Trigger(TriggerEvent.StopHover);
-	}
+    public GridController controller;
+ 
+    void Awake ()
+    {
+        if (!controller) {
+            Debug.LogError ("Controller not defined.");
+        }
+    }
+ 
+    public void StartHover ()
+    {
+        controller.Trigger (TriggerEvent.StartHover);
+    }
+ 
+    public void StopHover ()
+    {
+        controller.Trigger (TriggerEvent.StopHover);
+    }
 
-	public void OnRightClick()
-	{
-		controller.Trigger(TriggerEvent.OnRightClick);
-	}
-	public void OnLeftClick()
-	{
-		controller.Trigger(TriggerEvent.OnLeftClick);
-	}
+    public void OnRightClick ()
+    {
+        controller.Trigger (TriggerEvent.OnRightClick);
+    }
+
+    public void OnLeftClick ()
+    {
+        controller.Trigger (TriggerEvent.OnLeftClick);
+    }
 }

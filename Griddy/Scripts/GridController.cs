@@ -3,14 +3,24 @@ using System.Collections;
 
 /**
  * GridController
- *
+ * TODO
  */
 public class GridController : MonoBehaviour
 {
  
+    /**
+     * TODO
+     */
     public GridView view;
+    
+    /**
+     * TODO
+     */
     public GridModel model;
  
+    /**
+     * TODO
+     */
     public virtual void Trigger (TriggerEvent triggerEvent)
     {
         switch (triggerEvent) {

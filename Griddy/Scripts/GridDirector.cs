@@ -1,12 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+ * TODO
+ */
 public class GridDirector : MonoSingleton<GridDirector>
 {
-	public bool isDebugMode = false;
-	
-	protected override void Init ()
-	{
-		DontDestroyOnLoad(this);
-	}
+    /**
+     * TODO
+     */
+    public bool isDebugMode = false;
+ 
+    /**
+     * TODO
+     */
+    protected override void Init ()
+    {
+        DontDestroyOnLoad (this);
+    }
 }
