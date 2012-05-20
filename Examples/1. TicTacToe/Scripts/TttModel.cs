@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class TttModel : MonoBehaviour {
+public class TttModel : GridModel {
 	
 	public Player player = Player.None;
 	public int index;
