@@ -4,8 +4,8 @@ public enum TriggerEvent
 {
 	StartHover,
 	StopHover,
-	RightClick,
-	LeftClick
+	OnRightClick,
+	OnLeftClick
 }
 
 /*
@@ -44,10 +44,10 @@ public class GridTrigger : MonoBehaviour
 
 	public void OnRightClick()
 	{
-		controller.Trigger(TriggerEvent.RightClick);
+		controller.Trigger(TriggerEvent.OnRightClick);
 	}
 	public void OnLeftClick()
 	{
-		controller.Trigger(TriggerEvent.LeftClick);
+		controller.Trigger(TriggerEvent.OnLeftClick);
 	}
 }

@@ -1,32 +1,38 @@
 using UnityEngine;
 using System.Collections;
 
-public class GridController : MonoBehaviour {
-	
-	public GridView view;
-	
-	public virtual void Trigger(TriggerEvent triggerEvent)
-	{
-		switch(triggerEvent)
-		{
-			case TriggerEvent.StartHover:
-				Debug.Log ("Hover Started");
-				break;
-			
-			case TriggerEvent.StopHover:
-				Debug.Log ("Hover Stopped");
-				break;
-			
-			case TriggerEvent.LeftClick:
-				Debug.Log ("Left Click");
-				break;
-			
-			case TriggerEvent.RightClick:
-				Debug.Log ("Right Click");
-				break;
-				
-			default:
-				break;
-		}
-	}
+/**
+ * GridController
+ *
+ */
+public class GridController : MonoBehaviour
+{
+ 
+    public GridView view;
+    public GridModel model;
+ 
+    public virtual void Trigger (TriggerEvent triggerEvent)
+    {
+        switch (triggerEvent) {
+            
+        case TriggerEvent.StartHover:
+            model.StartHover ();
+            break;
+         
+        case TriggerEvent.StopHover:
+            model.StopHover ();
+            break;
+         
+        case TriggerEvent.OnLeftClick:
+            model.OnLeftClick ();
+            break;
+         
+        case TriggerEvent.OnRightClick:
+            model.OnRightClick ();
+            break;
+             
+        default:
+            break;
+        }
+    }
 }
