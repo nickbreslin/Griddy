@@ -6,7 +6,9 @@ public enum ViewState
     Default,
     Acceptable,
     Unacceptable,
-    Invalid
+    Invalid,
+    Possible,
+    Selected
 }
 
 public class GridView : MonoBehaviour
@@ -42,6 +44,14 @@ public class GridView : MonoBehaviour
                 break;
              
             case ViewState.Unacceptable:
+                renderer.material.color = Color.red;
+                break;
+                
+            case ViewState.Possible:
+                renderer.material.color = new Color(0,0.25f,0, 1f);
+                break;
+                
+            case ViewState.Selected:
                 renderer.material.color = Color.red;
                 break;
              

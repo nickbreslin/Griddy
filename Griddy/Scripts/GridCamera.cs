@@ -27,7 +27,8 @@ public class GridCamera : MonoSingleton<GridCamera>
      */
     static public void RaycastOn ()
     {
-        instance.activeRaycast = true;
+        
+        GridCamera.instance.activeRaycast = true;
     }
 
     /**

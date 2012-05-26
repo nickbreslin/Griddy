@@ -5,23 +5,22 @@ public class SbController : GridController
 {   
     public override void Trigger (TriggerEvent triggerEvent)
     {
-        /*
+        
         switch (triggerEvent) {
         case TriggerEvent.StartHover:
-            ((TttModel)model).HighlightOn ();
+            ((SbModel)model).StartHover ();
             break;
          
         case TriggerEvent.StopHover:
-            ((TttModel)model).HighlightOff ();
+            ((SbModel)model).StopHover ();
             break;
          
         case TriggerEvent.OnLeftClick:
-            ((TttModel)model).PlaceMarker ();
+            ((SbModel)model).OnLeftClick ();
             break;
              
         default:
             break;
         }
-        */
     }
 }
