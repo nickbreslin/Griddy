@@ -43,19 +43,12 @@ public class SbGame : MonoSingleton<SbGame>
         
         List<GameObject> list = new List<GameObject> ();
         
-        //list.Add(GridGenerator.instance.Fetch(0,0)); // 0
-        //list.Add(GridGenerator.instance.Fetch(1,1)); // 1 > 1
-        //list.Add(GridGenerator.instance.Fetch(1,2)); // 2 > 1
-        //list.Add(GridGenerator.instance.Fetch(2,3)); // 3 > 2
-        //list.Add(GridGenerator.instance.Fetch(2,4)); // 4 > 2
-        //list.Add(GridGenerator.instance.Fetch(3,5)); // 5 > 3
-        
-        foreach (GameObject go in list) {
-            //    go.GetComponent<SbModel>().Possible();
-        }
-        
-        //GameObject s1 = GridGenerator.instance.Fetch(3,3);
-        //s1.GetComponent<SbModel>();
+        GameObject s1 = GridGenerator.instance.Fetch(3,3);
+        s1.GetComponent<SbModel>().SelectArea();
+        GameObject s2 = GridGenerator.instance.Fetch(6,4);
+        s2.GetComponent<SbModel>().SelectCone();
+        GameObject s3 = GridGenerator.instance.Fetch(7,1);
+        s3.GetComponent<SbModel>().SelectLine();
     }
         
     public void Update ()

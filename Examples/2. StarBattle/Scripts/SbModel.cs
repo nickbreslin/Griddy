@@ -40,6 +40,36 @@ public class SbModel : GridModel
         }
     }
     
+    public void SelectArea ()
+    {
+        controller.view.SetState (ViewState.Acceptable);
+        withinRange = GridGenerator.instance.FetchArea (coord, 2);
+        
+        foreach (GameObject go in withinRange) {
+            go.GetComponent<SbModel> ().Possible ();
+        }
+    }
+    
+    public void SelectLine ()
+    {
+        controller.view.SetState (ViewState.Acceptable);
+        withinRange = GridGenerator.instance.FetchLine (coord, 5);
+        
+        foreach (GameObject go in withinRange) {
+            go.GetComponent<SbModel> ().Possible ();
+        }
+    }
+    
+    public void SelectCone ()
+    {
+        controller.view.SetState (ViewState.Acceptable);
+        withinRange = GridGenerator.instance.FetchCone (coord, 4);
+        
+        foreach (GameObject go in withinRange) {
+            go.GetComponent<SbModel> ().Possible ();
+        }
+    }
+    
     public override void StopHover ()
     {
         controller.view.SetState (ViewState.Default);
