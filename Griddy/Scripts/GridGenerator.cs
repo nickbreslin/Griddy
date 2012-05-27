@@ -9,6 +9,11 @@ public class GridGenerator : MonoSingleton<GridGenerator>
 {
     public List<GameObject> tiles = new List<GameObject> ();
  
+    
+    public GameObject Fetch( int x, int y)
+    {
+        return this.Fetch(new Coord(x,y));   
+    }
     public GameObject Fetch(Coord coord)
     {
         foreach(GameObject tile in tiles)
@@ -22,18 +27,17 @@ public class GridGenerator : MonoSingleton<GridGenerator>
         return null;
     }
     
-    public List<GameObject> FetchRadius(Coord coord, int radius)
+    public List<GameObject> FetchArea(Coord coord, int range)
     {
         List<GameObject> gos = new List<GameObject> ();
-        gos.Add(tiles[0]);
         /*
-         * - - - - - - -
-         *- - 2 2 2 - - 
-         * - 2 1 1 2 - -
-         *- 2 1 0 1 2 -
-         * - 2 1 1 2 - -
-         *- - 2 2 2 - -
-         * - - - - - - -
+         *  - - - - - - -
+         * - - 2 2 2 - - 
+         *  - 2 1 1 2 - -
+         * - 2 1 0 1 2 -
+         *  - 2 1 1 2 - -
+         * - - 2 2 2 - -
+         *  - - - - - - -
          *
          * determine level.
          * 
@@ -44,26 +48,75 @@ public class GridGenerator : MonoSingleton<GridGenerator>
          * 
          */
         
-        if(radius > 1)
+        int a = 0;
+        int b = 1;
+        int nr = 0;
+        int nl = 0;
+        
+        int r = range / 2;
+        
+        if (coord.y % 2 == 0)
         {
-            //gos.FetchRadius(coord, radius - 1);
+            if(range % 2 == 1)
+            {
+                b = 0;
+                a = 1;
+            }
+            else
+            {
+                b = 0;
+            }
         }
         else
         {
-            return gos;
+            if(range % 2 == 0)
+            {
+                
+                b = 0;
+            }
+            else
+            {
+            }
+        }
+
+        List<Coord> list = new List<Coord>();
+        
+        list.Add(new Coord(coord.x + range, coord.y));
+        list.Add(new Coord(coord.x - range, coord.y));
+        
+        if(range > 1)
+        {
+            for(int m = 1; m < range; m++)
+            {
+                nr = 0;
+                nl = 0;
+                if(coord.y % 2 == 1 && m % 2 == 1)
+                {
+                    nr = 1;
+                }
+                
+                if(coord.y % 2 == 0 && m % 2 == 1)
+                {
+                    nl = 1;
+                }
+                list.Add(new Coord(coord.x + range - (m/2) - nr, coord.y + m));
+                list.Add(new Coord(coord.x - range + (m/2) + nl, coord.y + m));
+                list.Add(new Coord(coord.x + range - (m/2) - nr, coord.y - m));
+                list.Add(new Coord(coord.x - range + (m/2) + nl, coord.y - m));
+            }
+        }
+        for(int x = -r - b; x <= r + a; x++)
+        {
+            list.Add(new Coord(coord.x + x, coord.y + range));
         }
         
-        return gos;
-    }
-    
-    public List<GameObject> FetchCone(Coord coord, int radius)
-    {
-        List<GameObject> gos = new List<GameObject> ();
-        
-        int r = radius / 2;
-        for(int x = -r; x <= r; x++)
+        for(int x = -r - b; x <= r + a; x++)
         {
-            Coord c = new Coord(coord.x + x, coord.y + radius);
+            list.Add(new Coord(coord.x + x, coord.y - range));
+        }
+        
+        foreach(Coord c in list)
+        {
             GameObject go = Fetch(c);
                 
             if(go != null)
@@ -71,31 +124,115 @@ public class GridGenerator : MonoSingleton<GridGenerator>
                 gos.Add(go);
             }
         }
-
-        /*
-         *- - - - - - -
-         * - 3 3 3 3 - -
-         *- - 2 2 2 - - 
-         * - - 1 1 - - -
-         *- - - 0 - - -
-         * - - - - - - -
-         *
-         * determine level.
-         * 
-         * level = number left, number right.
-         * 
-         * step left X. select.
-         * step right X.
-         * 
-         */
         
-        if (radius > 0)
+        
+        
+        
+        
+        if (range > 1)
         {
-            List<GameObject> _gos = FetchCone(coord, radius - 1);
+            List<GameObject> _gos = FetchArea(coord, range - 1);
+            
+            foreach (GameObject _go in _gos)
+            {
+                gos.Add(_go);
+            }
+        }
+        
+        return gos;
+    }
+    
+    public List<GameObject> FetchCone(Coord coord, int range)
+    {
+        
+        List<GameObject> gos = new List<GameObject> ();
+        
+        int a = 0;
+        int b = 0;
+        
+        if (coord.y % 2 == 0)
+        {
+            if (range % 2 == 1)
+            {
+                a = 1;
+            }
+        }
+        else
+        {
+            if (range % 2 == 1)
+            {
+                b = 1;
+            }
+        }
+        
+        if (range % 2 == 0)
+        {
+               // a = 1;
+        }
+        
+        int r = range/2;
+        
+        for(int x = -r - b; x <= r + a; x++)
+        {
+            Coord c = new Coord(coord.x + x, coord.y + range);
+            GameObject go = Fetch(c);
+                
+            if(go != null)
+            {
+                gos.Add(go);
+            }
+        }
+        
+        if (range > 1)
+        {
+            List<GameObject> _gos = FetchCone(coord, range - 1);
             
             foreach (GameObject go in _gos)
             {
                 gos.Add(go);
+            }
+        }
+        
+        return gos;
+    }
+ 
+    public List<GameObject> FetchLine(Coord coord, int range)
+    {
+        
+        List<GameObject> gos = new List<GameObject> ();
+        
+        //Coord c = new Coord(coord.x, coord.y + range);
+        //Coord c = new Coord(coord.x+(range%2), coord.y + range);
+        
+        //int r = range/2;
+        //Coord c = new Coord(coord.x-r, coord.y + range);
+        int a = 0;
+        
+        if (coord.y % 2 == 0)
+        {
+            if (range % 2 == 1)
+            {
+                a = 1;
+            }
+        }
+        
+        int r = range/2;
+        Coord c = new Coord(coord.x + r + a, coord.y + range);
+        
+        GameObject go = Fetch(c);
+                
+        if(go != null)
+        {
+            gos.Add(go);
+        }
+        
+        if (range > 1)
+        {
+            List<GameObject> _gos = FetchLine(coord, range - 1);
+            
+            foreach (GameObject _go in _gos)
+            {
+                gos.Add(_go);
             }
         }
         

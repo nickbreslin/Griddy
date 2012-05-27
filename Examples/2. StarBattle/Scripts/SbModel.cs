@@ -6,12 +6,13 @@ public class SbModel : GridModel
 {
     public SbController controller;
     List<GameObject> withinRange = new List<GameObject>();
+
     
     public void Selected()
     {
         controller.view.SetState(ViewState.Selected);
         
-         List<GameObject> withinRange = GridGenerator.instance.FetchRadius(coord, 1);
+         List<GameObject> withinRange = GridGenerator.instance.FetchArea(coord, 2);
         
         foreach(GameObject go in withinRange)
         {
@@ -33,8 +34,8 @@ public class SbModel : GridModel
     {
         controller.view.SetState(ViewState.Acceptable);
         // show full   
-        
-        withinRange = GridGenerator.instance.FetchCone(coord, 2);
+        //Debug.Log(coord.ToString());
+        withinRange = GridGenerator.instance.FetchArea(coord, SbGame.range);
         
         foreach(GameObject go in withinRange)
         {

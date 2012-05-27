@@ -64,7 +64,6 @@ public class Coord
     
     public bool Equals (int x, int y)
     {
-        Debug.Log("("+x+","+this.x+")");
         if (x == this.x && y == this.y) {
             return true;
         }
