@@ -25,7 +25,7 @@ h2. Contributions
 
 h2. Releases & Changelog
 
-h2. 2012.05.26 - v0.03 - Selection Algorithms
+h3. 2012.05.26 - v0.03 - Selection Algorithms
 
 * Line, Arc/Cone/Triangle, Perimeter Range Selection.
 * Revisiting Format and Griddy core methods.
