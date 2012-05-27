@@ -15,7 +15,7 @@ Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
 h2. License
 
 * Source under "MIT license":http://copyfree.org/licenses/mit/license.txt.
-* I would very much appreciate to know if Griddy or Examples are used
+* I would very much appreciate to know if Griddy or Examples are used in released titles.
 
 h2. Contributions
 
@@ -24,6 +24,11 @@ h2. Contributions
 * GUI influenced by "AngryAnt":http://eej.dk/angryant/general/tipsandtricks/building-a-menu-of-delegates-and-enums/
 
 h2. Releases & Changelog
+
+h2. 2012.05.26 - v0.03 - Selection Algorithms
+
+* Line, Arc/Cone/Triangle, Perimeter Range Selection.
+* Revisiting Format and Griddy core methods.
 
 h3. 2012.05.18 - v0.02 - Tic-Tac-Toe Example
 
