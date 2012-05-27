@@ -5,56 +5,52 @@ using System.Collections.Generic;
 public class SbModel : GridModel
 {
     public SbController controller;
-    List<GameObject> withinRange = new List<GameObject>();
-
+    List<GameObject> withinRange = new List<GameObject> ();
     
-    public void Selected()
+    public void Selected ()
     {
-        controller.view.SetState(ViewState.Selected);
+        controller.view.SetState (ViewState.Selected);
         
-         List<GameObject> withinRange = GridGenerator.instance.FetchArea(coord, 2);
+        List<GameObject> withinRange = GridGenerator.instance.FetchArea (coord, 2);
         
-        foreach(GameObject go in withinRange)
-        {
-            go.GetComponent<SbModel>().Possible();
+        foreach (GameObject go in withinRange) {
+            go.GetComponent<SbModel> ().Possible ();
         }
     }
     
-    public override void OnLeftClick()
+    public override void OnLeftClick ()
     {
     }
     
-    public void Possible()
+    public void Possible ()
     {
-        controller.view.SetState(ViewState.Possible);
+        controller.view.SetState (ViewState.Possible);
         //show alpha   
     }
     
-    public override void StartHover()
+    public override void StartHover ()
     {
-        controller.view.SetState(ViewState.Acceptable);
+        controller.view.SetState (ViewState.Acceptable);
         // show full   
         //Debug.Log(coord.ToString());
-        withinRange = GridGenerator.instance.FetchArea(coord, SbGame.range);
+        withinRange = GridGenerator.instance.FetchArea (coord, SbGame.range);
         
-        foreach(GameObject go in withinRange)
-        {
-            go.GetComponent<SbModel>().Possible();
+        foreach (GameObject go in withinRange) {
+            go.GetComponent<SbModel> ().Possible ();
         }
     }
     
-    public override void StopHover()
+    public override void StopHover ()
     {
-        controller.view.SetState(ViewState.Default);
+        controller.view.SetState (ViewState.Default);
         // go back to alpha, or Clear.
-        foreach(GameObject go in withinRange)
-        {
-            go.GetComponent<SbModel>().Clear();
+        foreach (GameObject go in withinRange) {
+            go.GetComponent<SbModel> ().Clear ();
         }
     }
     
-    public void Clear()
+    public void Clear ()
     {
-        controller.view.SetState(ViewState.Default);
+        controller.view.SetState (ViewState.Default);
     }
 }

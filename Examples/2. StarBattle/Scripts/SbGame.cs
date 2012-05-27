@@ -27,13 +27,12 @@ public class SbGame : MonoSingleton<SbGame>
     //TttModel[] board = new Player[9];
     List<TttModel> board = new List<TttModel> ();
     public GameObject tile;
-    
     public GameObject ship1;
     public GameObject ship2;
  
-    protected override void Init()
+    protected override void Init ()
     {
-        GameInit();
+        GameInit ();
     }
     
     public void GameInit ()
@@ -42,7 +41,7 @@ public class SbGame : MonoSingleton<SbGame>
         GridGenerator.instance.Clear ();
         GridGenerator.instance.GenerateHex (tile, Vector3.zero, 10, 10);
         
-        List<GameObject> list = new List<GameObject>();
+        List<GameObject> list = new List<GameObject> ();
         
         //list.Add(GridGenerator.instance.Fetch(0,0)); // 0
         //list.Add(GridGenerator.instance.Fetch(1,1)); // 1 > 1
@@ -51,39 +50,33 @@ public class SbGame : MonoSingleton<SbGame>
         //list.Add(GridGenerator.instance.Fetch(2,4)); // 4 > 2
         //list.Add(GridGenerator.instance.Fetch(3,5)); // 5 > 3
         
-        foreach(GameObject go in list)
-        {
-        //    go.GetComponent<SbModel>().Possible();
+        foreach (GameObject go in list) {
+            //    go.GetComponent<SbModel>().Possible();
         }
         
         //GameObject s1 = GridGenerator.instance.Fetch(3,3);
         //s1.GetComponent<SbModel>();
     }
         
-    public void Update()
+    public void Update ()
     {
-      if(Input.GetKey(KeyCode.Alpha1))
-      {
+        if (Input.GetKey (KeyCode.Alpha1)) {
             SbGame.range = 1;
-      }
+        }
         
-      if(Input.GetKey(KeyCode.Alpha2))
-      {
+        if (Input.GetKey (KeyCode.Alpha2)) {
             SbGame.range = 2;
-      }
+        }
         
-      if(Input.GetKey(KeyCode.Alpha3))
-      {
+        if (Input.GetKey (KeyCode.Alpha3)) {
             SbGame.range = 3;
-      }
-        if(Input.GetKey(KeyCode.Alpha4))
-      {
+        }
+        if (Input.GetKey (KeyCode.Alpha4)) {
             SbGame.range = 4;
-      }
-        if(Input.GetKey(KeyCode.Alpha5))
-      {
+        }
+        if (Input.GetKey (KeyCode.Alpha5)) {
             SbGame.range = 5;
-      }
+        }
             
     }
 }
