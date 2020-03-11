@@ -1,3 +1,8 @@
+h2. Deprecated.
+
+This project has been deprecated and is no longer supported, nor compatible with the latest releases of Unity.
+
+
 h1. Griddy
 
 A Grid library for the Unity game engine.
@@ -9,8 +14,6 @@ Source: "GitHub":https://github.com/nickbreslin/Griddy
 h3. Nick Breslin, Etiquette Studio
 
 E-Mail: "nickbreslin@gmail.com":mailto:nickbreslin@gmail.com
-Twitter: "@EtiquetteStudio":http://twitter.com/#!/EtiquetteStudio
-Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
 
 h2. License
 
